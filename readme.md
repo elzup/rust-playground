@@ -1,0 +1,3 @@
+# Rust playground
+
+Rust scripts
