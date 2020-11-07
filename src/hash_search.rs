@@ -7,21 +7,25 @@ use rand::{thread_rng, Rng};
 
 use base64::encode;
 use regex::Regex;
+use std::env;
 
 pub fn main() {
-    // let search = "oeisorg";
-    let re = Regex::new(r"oeis").unwrap();
-    println!("hello");
+    let args: Vec<String> = env::args().collect();
 
-    for n in 1..10 {
-        let seed = format!("{}{}", rand_str(), n);
-        let b64str = encode(&seed);
+    let search = &args[1];
+    let salt = &args[2];
+
+    let re = Regex::new(search).unwrap();
+
+    for _n in 1..100000 {
+        let seed = &format!("{}{}", salt, rand_str());
+        let b64str = encode(seed);
         // read hash digest
 
-        println!("{}", &b64str);
-
         if re.is_match(&b64str) {
+            println!("{}", &b64str);
             println!("{}", seed);
+            break;
         }
     }
 }
