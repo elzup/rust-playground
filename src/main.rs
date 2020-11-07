@@ -1,3 +1,5 @@
+mod hash_search;
+
 fn main() {
-    println!("Hello, world!");
+    hash_search::main()
 }
