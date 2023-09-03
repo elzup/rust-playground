@@ -31,5 +31,9 @@ pub fn main() {
 }
 
 fn rand_str() -> String {
-    return thread_rng().sample_iter(&Alphanumeric).take(30).collect();
+    return thread_rng()
+        .sample_iter(&Alphanumeric)
+        .map(char::from)
+        .take(30)
+        .collect();
 }

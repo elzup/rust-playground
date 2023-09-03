@@ -1,7 +1,16 @@
-
-enum Heating {Weak, Strong }
-enum Running { Cooling, Heating(Heating), Dry }
-enum State { Off, Running(Running) }
+enum Heating {
+    Weak,
+    Strong,
+}
+enum Running {
+    Cooling,
+    Heating(Heating),
+    Dry,
+}
+enum State {
+    Off,
+    Running(Running),
+}
 
 fn main() {
     // dbg!("{:?}", Disjoint::Alpha(Alpha::A));
