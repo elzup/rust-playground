@@ -8,5 +8,6 @@ edition = "2018"
 
 [dependencies]
 base64 = "0.21.3"
+crate = "0.0.2"
 rand = "0.8.5"
 regex = "1.9.5"

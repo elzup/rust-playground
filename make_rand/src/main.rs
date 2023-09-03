@@ -1,11 +1,12 @@
-extern crate base64;
 // extern crate crypto;
+extern crate base64;
 extern crate rand;
 extern crate regex;
+use base64::engine::general_purpose;
+use base64::Engine;
 use rand::distributions::Alphanumeric;
 use rand::{thread_rng, Rng};
 
-use base64::encode;
 use regex::Regex;
 use std::env;
 
@@ -19,7 +20,8 @@ pub fn main() {
 
     for _n in 1..100000 {
         let seed = &format!("{}{}", salt, rand_str());
-        let b64str = encode(seed);
+
+        let b64str: String = general_purpose::STANDARD_NO_PAD.encode(seed);
         // read hash digest
 
         if re.is_match(&b64str) {
